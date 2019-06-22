@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="prism.css"  rel="stylesheet" />
+</head>
+<body>
+
+<li>VARIÁVEIS: var, let & const</li>
+<pre class="language-js">
+   <code class="language-js">
+// Usando var cai no conceito hoisting onde ela eh sempre pescada para o topo do codigo
+var learning = 'JavaScript';
+
+console.log(learning);
+
+// Uma variável pode conter: letras, números ou sublinhados
+// não pode começar com um número
+
+var 99dias;
+var agente007;
+
+var _produtos;
+var 01products;
+
+// Enviando valor para o console
+console.log()
+
+// Formas de "Escrever Variaveis com mais de um nome"
+var firstName = 'Juan Pablo'; // CamelCase
+var first_name = 'Juan Pablo'; //underscore
+var FirstName = 'Juan Pablo'; // pascal case
+var firstname = 'Juan Pablo';
+
+
+
+// var, let  const
+
+// VAR
+var learning = 'JavaScript';
+var age = 20;
+var job = true;
+
+learning = 'Modern JS';
+
+// Inicialização de variavel
+var learning;
+learning = 'JavaScript';
+
+// Inicialização de 2(duas) variaveis
+var learning, name;
+
+learning = 'JavaScript';
+name = 'Juan';
+
+console.log(learning);
+console.log(name);
+
+// Um dos principais problemas do JS eh que o var pode ser reescrito
+// you can re declare the variable
+var learning = 'Modern JS';
+var learning = 'JavaScript';
+
+// Mas isso foi resolvidi com let
+
+let learning = 'Modern JS';
+let learning = 'JavaScript'; // aqui o JS vai reclamar falando que let leraning ja tem um valor definido
+
+
+// Let nas Variaveis
+
+let name = 'Juan';
+name = 'Pablo';
+console.log(name);
+
+// Incicializando variavel
+let learning;
+
+learning = 'Learning JS';
+
+console.log(learning);
+
+// Multiplas Variaveis
+let product1 = 'Book #1',
+    product2 = 'Book #1';
+
+console.log(product1);
+console.log(product2);
+
+// Variavel como Array
+let shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
+console.log(shoppingCart);
+
+// CONST VARIABLES
+// Const deve ter um valor inicial e nao pode ser alterado
+const name;
+
+const name = 'Juan';
+console.log(name);
+
+// Não é possivel reatribuir um valor
+name = 'Pablo';
+console.log(name);
+
+
+// Em constantes os valores de um objeto podem sim ser alterados
+const car = {
+    name: 'Mustang',
+    motor: 6.5
+}
+console.log(car);
+
+car.name = 'Audi';
+console.log(car);
+
+// Const com Array os valores do array tbm pode sem alterados
+const numbers = [1,2,3,4,5];
+
+console.log(numbers);
+
+numbers[3] = 3;
+console.log(numbers);
+
+numbers.push(6);
+console.log(numbers);
+
+// So não é possivel reescrever o array inteiro
+
+numbers = [1,2,3];
+    </code>
+</pre>
+
+<li>Strings in JavaScript</li>
+<pre class="language-js">
+   <code class="language-js">
+let name;
+// Aspas.
+name = 'Juan Pablo';
+name = "Juan Pablo";
+name = 'Juan Pablo";
+name = 'Then i said: hey what's up? ';
+name = 'Then i said: hey what\'s up? '; // A barra preve o conserto da aspas simples
+
+console.log(name);
+
+// Concatenando string modo simples
+let learning = 'Java' + 'Script';
+console.log(learning);
+
+// Concatenando 2 variaveis.
+let learning = 'learning',
+    tech = 'JavaScript';
+
+console.log(learning + ' ' + tech);
+
+// Concatenando variavel com string.
+let band = "Metallica";
+let song = "Enter Sandman";
+
+let playing;
+playing = 'Playing ' + song + ' by ' + band;
+
+// Concatenando
+name = band + ": " + song;
+
+// Outra forma de Concatenar
+let name;
+
+name = 'Juan Pablo ';
+name += 'De la torre';
+console.log(name);
+
+//É possivel concatenar strings de forma mais bonita e facil de ler Usando
+// Template Strings
+
+html = `
+    &lt;ul>
+        &lt;li>Item: ${product1}&lt;/li>
+        &lt;li>Price: ${price1}&lt;/li>
+        &lt;li>Item: ${product2}&lt;/li>
+        &lt;li>Price: ${price2}  &lt;/li>
+        &lt;li>Total: ${total(price1, price2)}&lt;/li>
+    &lt;/ul>
+`;
+    </code>
+</pre>
+
+<li>String Methods</li>
+<pre class="language-js">
+   <code class="language-js">
+
+const learning = 'Learning JavaScript is great!';
+let output;
+
+// length Conta os caracteres
+output = learning.length ;
+
+// concat cada parametro concatena a string
+output = learning.concat(" ", " and fun");
+
+// uppercase Transforma em caixa alta / Letra maiuscula
+output = learning.toUpperCase();
+
+// lowercase Transforma em caixa Baix / Letra minuscula
+output = learning.toLowerCase();
+
+// indexOf // indexof -1 quer dizer que nao existe.
+// No demais retorna onde esta a primeira letra da string dividindo ela num array
+output = learning.indexOf('JavaScript');
+output = learning.indexOf('PHP');
+
+// substring() corta letras da palavra
+// Primeiro parametro eh do inicio para frente
+// Segundo parametro eh do fin para o inicio
+output = learning.substring(0,10);
+output = learning.substring(2,10);
+
+// Aquie podemos mostrar apenas os 4 ultimos caracteres
+output = learning.substring( learning.length - 4 );
+
+// slice() corta do inicio para frente e com
+// Numero negativo corta da frente para atras
+// negative number will start from the end
+output = learning.slice(0,4); //Lear
+output = learning.slice(1,4); //ear
+output = learning.slice(-2);  //t!
+
+// Split retira o espaço da string
+output = learning.split(" ");
+
+// Outro exemplo retira a virgula e o espaço
+const hobbies = 'read, walk, listen music, write, learn to program';
+output = hobbies.split(", ");
+
+// Replace
+//Primeiro o valor novo depois o valor que sera removido
+output = learning.replace('JavaScript', 'Modern JavaScript');
+
+// includes
+// Verifica se contem a string dentro da string e retorna true ou false
+output = learning.includes('JavaScript');
+output = learning.includes('PHP');
+
+// repeat
+let greet =  "hello ";
+    output = greet.repeat(3);
+
+console.log(output);
+    </code>
+</pre>
+
+
+
+<style>
+* {
+    margin:0;
+    padding:0;
+}
+li {
+    text-align: center;
+    list-style:none;
+    font-family: helvetica, arial, serif;
+    margin:30px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+    background-color: black;
+}
+code[class*="language-"], pre[class*="language-"] {
+    font-size: 20px;
+}
+
+li {
+    font-size: 30px;
+}
+</style>
+    <script src="prism.js"></script>
+</body>
+</html>
