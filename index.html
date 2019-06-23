@@ -252,6 +252,228 @@ console.log(output);
     </code>
 </pre>
 
+<!-- HERE -->
+<li>Numbers in JavaScript</li>
+<pre class="language-js">
+   <code class="language-js">
+const number1 = 30;
+const number2 = 20;
+const number3 = 20.20;
+const number4 = .10213;
+const number5 = -3;
+
+console.log(number1);
+
+let result;
+
+// addition
+result = number1 + number2;
+// substraction
+result = number1 - number2;
+// multiplication
+result = number1 * number2;
+// Division
+result = number1 / number2;
+// Modulos
+result = number1 % number2;
+
+// Pi
+result = Math.PI;
+
+// round
+//Arredonda valor sempre para cima a partir de .5
+result = Math.round(2.5); //3
+
+// Areendonda sempre para cim
+result = Math.ceil(2.2);
+
+// Arredonda sempre para baixo
+result = Math.floor(2.2);
+
+// raiz quadrada
+result = Math.sqrt(144);
+
+// retornar o valor absoluto de um numero
+// ou seja distancia entre o numro e o pont de origem 0 (zero)
+result = Math.abs(-300); //300
+
+// Potencia
+result = Math.pow(8, 3);
+
+// Pegar o menor valor da lista
+// Para fazer com array basta usar spread+array ...array
+const nums = [3,5,1,2,9,4,2, -3]
+result = Math.min(...nums);
+//ou
+result = Math.min(3,5,1,2,9,4,2, -3);
+
+// Pegar o maior valor da lista
+// Para fazer com array basta usar spread+array ...array
+result = Math.max(4,1,21,4,15,5,11,5);
+
+// Gera um numero randomico
+result = Math.random();
+// Função util para achar entre 2 valore
+const valorAleatorio = (min, max) =>  Math.random() * (max - min) + min;
+// Caso queira que o numero gerado seja inteiro
+const valorInteiroAleatorio =  (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Aplicando 20€ de desconto
+const itens = (20 + 20 + 30 + 40);
+const desconto = (itens / 100) * 20;
+const valorTotal = itens - desconto;
+
+console.log('Total: ' + itens)
+console.log('desconto: ' + desconto);
+console.log('Pay: ' + valorTotal);
+
+
+
+// Incrementar ou Decrementar
+let score = 5;
+score++;
+score--;
+++score;
+--score;
+
+score += 3;
+score -= 3;
+
+console.log(score);
+    </code>
+</pre>
+
+
+
+<li>Data Types in JavaScript</li>
+<pre class="language-js">
+   <code class="language-js">
+
+// Javascript is a dinamically typed language
+// You don't specify the data type
+// the data type is defined by the value and not the variable
+
+// The same variable can hold different data types and change
+// while the program is executing
+
+// In languages such as C, Java or C# you have to specify the data type
+
+// In JavaScript you can add that functionality with TypeScript
+
+// TypeOf operator is used to retrieve the data type
+
+// In JavaScript a variable can change the data type
+
+let name = 'Juan'
+name = 20;
+name = true;
+name = undefined;
+name = Symbol('Hello');
+console.log(typeof name);
+
+// Let's review the other data types
+const name = "Juan";
+console.log(typeof name );
+
+// Numbers
+let number;
+
+number =  20;
+console.log(typeof number );
+number = "20";
+console.log(typeof number );
+
+// Boolean
+let learningJS = true;
+console.log(typeof learningJS );
+
+// Null
+// will return object
+let bankSavings = null;
+console.log(typeof bankSavings );
+
+// Undefined
+let person;
+console.log(typeof person );
+
+// Symbol (ES6)
+let symbolES6 = Symbol('this is a symbol');
+console.log(typeof symbolES6);
+
+// Reference (Objetos)
+// Arrays
+let languages = ['HTML5', 'JS', 'PHP'];
+console.log(typeof languages);
+
+// Objects
+let person = {
+    name: 'Juan',
+    city: 'mexico'
+}
+console.log(typeof person);
+
+// Dates
+let today = new Date();
+console.log(typeof today);
+
+    </code>
+</pre>
+
+<li>Converter Strings para Numero</li>
+<pre class="language-js">
+   <code class="language-js">
+let number1 = "50",
+    number2 = 10,
+    number3 = 'nine';
+
+
+console.log(number1 + number2);
+
+// Converter number1 para numero
+console.log(Number(number1) + number2);
+console.log(parseInt(number1) + number2);
+
+// Converter number 3
+console.log(number3);
+
+// Concatenar valores
+console.log(number1 + number2);
+
+// mas aqui ira subtrair
+console.log(number1 - number2);
+
+// Outros metodos
+let number = "20";
+number = Number("20");
+number = Number("20.20102");
+number = Number(true);
+number = Number(false);
+number = Number(null);
+number = Number("Hello world");
+number = Number([1,2,3,4]);
+
+console.log(number);
+console.log(typeof number);
+
+// ParseInt & ParseFloat
+// parse int na arredonda um float, ele apenas ignora o float e traz so as decimais+
+number = parseInt("100");
+number = parseInt("100.20");
+number = parseFloat("100.20");
+
+
+// ToFixed apenas para numero!
+let number1 = "1209139";
+let number2 = 1209139.101213;
+console.log(number1.toFixed(4) );
+console.log(number2.toFixed(4) );
+
+   </code>
+</pre>
 
 
 <style>
