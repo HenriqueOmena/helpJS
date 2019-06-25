@@ -8,7 +8,44 @@
     <link href="prism.css"  rel="stylesheet" />
 </head>
 <body>
+ARRAY VERIFICAR 
+    
+<li>ARRAYS s2</li>
+ <pre class="language-js">
+   <code class="language-js">  
+        const array = [1, [2, [3]]];
+        //            ^^^^^^^^^^^^^ outer array
+        //                ^^^^^^^^  inner array
+        //                    ^^^   innermost array
+   </code>
+   
+    //Array#flat returns a flattened version of a given array.
 
+    array.flat();
+    // → [1, 2, [3]]
+
+    // …is equivalent to:
+    array.flat(1);
+    // → [1, 2, [3]]
+    //Here’s another example. We have a duplicate function that takes a value, and returns an array 
+    //that contains that value twice. If we apply duplicate to each value in an array, we end up with a nested array.
+
+    const duplicate = (x) => [x, x];
+
+    [2, 3, 4].map(duplicate);
+    // → [[2, 2], [3, 3], [4, 4]]
+    
+    //You can then call flat on the result to flatten the array:
+
+    [2, 3, 4].map(duplicate).flat(); // 🐌
+    // → [2, 2, 3, 3, 4, 4]
+    
+    Since this pattern is so common in functional programming, there’s now a dedicated flatMap method for it.
+
+    [2, 3, 4].flatMap(duplicate); // 🚀
+    // → [2, 2, 3, 3, 4, 4]
+</pre>
+    
 <li>VARIÁVEIS: var, let & const</li>
 <pre class="language-js">
    <code class="language-js">
