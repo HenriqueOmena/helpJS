@@ -13,30 +13,58 @@ ARRAY VERIFICAR
 <li>ARRAYS s2</li>
  <pre class="language-js">
    <code class="language-js">  
-   Array.every():
-    //exemplos every
+    //definindo arrya de exemplos
     const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier'];
     const ages = [20, 25, 19, 21, 42];
+   
+    //Array.filter():
+    //Este método possibilita você filtrar múltiplos elementos com uma condição definida por você. Exemplo:
+    const startWithS = (word) => word.indexOf('S') === 0;
+    const beersStartWithS = beers.filter(startWithS);
+    console.log(beersStartWithS); // => [0: 'San Diego', 1: Saint Bier]
     
+    //Array.find():
+    //O diferencial deste método comparado ao método filter() é que sempre será 
+    //retornado apenas um elemento que se encaixe a condição definida por você. Confira o exemplo:
+    const findSanDiego = (element) => element === 'San Diego';
+    const beerSanDiego = beers.find(findSanDiego);
+    console.log(beerSanDiego); // => "San Diego"
+    
+    //Array.every():
     //Possibilita testar todos os elementos do seu array. Caso algum dos elementos não passe pela 
-    //condição definida por você, o retorno será false. Veja o exemplo:
-    
-    const greater = ages.every(isGreaterThan);
-    
+    //condição definida por você, o retorno será false. Veja o exemplo:    
     const isGreaterThan = (age) => age > 18;
     const greater = ages.every(isGreaterThan);
     console.log(greater); // => true
+    //Caso não houvessem elementos a serem retornados, obteríamos o retorno undefined.
     
     //Array.includes()
     //Possibilita verificar se um element existe ou não no array definido. Exemplo:
-
     console.log(beers.includes('Skol')); // => false
     console.log(ages.includes(25)); // => true
     
+    Array.map()
+    //Este método percorre todos os elementos do array, executando funções para cada elemento e 
+    //retornando um novo array como resultado. Exemplo:
+    const upAge = (age) => age + 1;
+    const newAges = ages.map(upAge);
+    console.log(newAges); // => [0: 21, 1: 26, 2: 20, 3: 22, 4: 43]
     
-
-
-   //Array#flat returns a flattened version of a given array.
+    //Array.some()
+    //Este método verifica se ao menos um elemento satisfaz a 
+    //condição definida por você. Exemplo:
+    const hasHeinekenOrSaint = (beer) => (beer === 'Saint Bier' || beer === 'Heineken');
+    const heinekenSaint = beers.some(hasHeinekenOrSaint);
+    console.log(heinekenSaint); // => true
+    
+    //Array.reduce()
+    //Você pode utilizar o método reduce para alguns casos, 
+    //sendo um deles para facilitar cálculos. Exemplo:
+    const reducerAge = (accumulator, age) => accumulator + age;
+    const sumAges = ages.reduce(reducerAge);
+    console.log(sumAges); // => 127
+    
+    //Array#flat returns a flattened version of a given array.
     const array = [1, [2, [3]]];
     //            ^^^^^^^^^^^^^ outer array
     //                ^^^^^^^^  inner array
