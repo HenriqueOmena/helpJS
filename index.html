@@ -13,13 +13,34 @@ ARRAY VERIFICAR
 <li>ARRAYS s2</li>
  <pre class="language-js">
    <code class="language-js">  
-        const array = [1, [2, [3]]];
-        //            ^^^^^^^^^^^^^ outer array
-        //                ^^^^^^^^  inner array
-        //                    ^^^   innermost array
-   </code>
-   
-    //Array#flat returns a flattened version of a given array.
+   Array.every():
+    //exemplos every
+    const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier'];
+    const ages = [20, 25, 19, 21, 42];
+    
+    //Possibilita testar todos os elementos do seu array. Caso algum dos elementos não passe pela 
+    //condição definida por você, o retorno será false. Veja o exemplo:
+    
+    const greater = ages.every(isGreaterThan);
+    
+    const isGreaterThan = (age) => age > 18;
+    const greater = ages.every(isGreaterThan);
+    console.log(greater); // => true
+    
+    //Array.includes()
+    //Possibilita verificar se um element existe ou não no array definido. Exemplo:
+
+    console.log(beers.includes('Skol')); // => false
+    console.log(ages.includes(25)); // => true
+    
+    
+
+
+   //Array#flat returns a flattened version of a given array.
+    const array = [1, [2, [3]]];
+    //            ^^^^^^^^^^^^^ outer array
+    //                ^^^^^^^^  inner array
+    //                    ^^^   innermost array
 
     array.flat();
     // → [1, 2, [3]]
@@ -44,6 +65,7 @@ ARRAY VERIFICAR
 
     [2, 3, 4].flatMap(duplicate); // 🚀
     // → [2, 2, 3, 3, 4, 4]
+    </code>
 </pre>
     
 <li>VARIÁVEIS: var, let & const</li>
