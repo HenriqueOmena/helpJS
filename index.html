@@ -8,62 +8,62 @@
     <link href="prism.css"  rel="stylesheet" />
 </head>
 <body>
-ARRAY VERIFICAR 
-    
+ARRAY VERIFICAR
+
 <li>ARRAYS s2</li>
  <pre class="language-js">
-   <code class="language-js">  
+   <code class="language-js">
     //definindo arrya de exemplos
     const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier'];
     const ages = [20, 25, 19, 21, 42];
-   
+
     //Array.filter():
     //Este método possibilita você filtrar múltiplos elementos com uma condição definida por você. Exemplo:
     const startWithS = (word) => word.indexOf('S') === 0;
     const beersStartWithS = beers.filter(startWithS);
     console.log(beersStartWithS); // => [0: 'San Diego', 1: Saint Bier]
-    
+
     //Array.find():
-    //O diferencial deste método comparado ao método filter() é que sempre será 
+    //O diferencial deste método comparado ao método filter() é que sempre será
     //retornado apenas um elemento que se encaixe a condição definida por você. Confira o exemplo:
     const findSanDiego = (element) => element === 'San Diego';
     const beerSanDiego = beers.find(findSanDiego);
     console.log(beerSanDiego); // => "San Diego"
-    
+
     //Array.every():
-    //Possibilita testar todos os elementos do seu array. Caso algum dos elementos não passe pela 
-    //condição definida por você, o retorno será false. Veja o exemplo:    
+    //Possibilita testar todos os elementos do seu array. Caso algum dos elementos não passe pela
+    //condição definida por você, o retorno será false. Veja o exemplo:
     const isGreaterThan = (age) => age > 18;
     const greater = ages.every(isGreaterThan);
     console.log(greater); // => true
     //Caso não houvessem elementos a serem retornados, obteríamos o retorno undefined.
-    
+
     //Array.includes()
     //Possibilita verificar se um element existe ou não no array definido. Exemplo:
     console.log(beers.includes('Skol')); // => false
     console.log(ages.includes(25)); // => true
-    
+
     Array.map()
-    //Este método percorre todos os elementos do array, executando funções para cada elemento e 
+    //Este método percorre todos os elementos do array, executando funções para cada elemento e
     //retornando um novo array como resultado. Exemplo:
     const upAge = (age) => age + 1;
     const newAges = ages.map(upAge);
     console.log(newAges); // => [0: 21, 1: 26, 2: 20, 3: 22, 4: 43]
-    
+
     //Array.some()
-    //Este método verifica se ao menos um elemento satisfaz a 
+    //Este método verifica se ao menos um elemento satisfaz a
     //condição definida por você. Exemplo:
     const hasHeinekenOrSaint = (beer) => (beer === 'Saint Bier' || beer === 'Heineken');
     const heinekenSaint = beers.some(hasHeinekenOrSaint);
     console.log(heinekenSaint); // => true
-    
+
     //Array.reduce()
-    //Você pode utilizar o método reduce para alguns casos, 
+    //Você pode utilizar o método reduce para alguns casos,
     //sendo um deles para facilitar cálculos. Exemplo:
     const reducerAge = (accumulator, age) => accumulator + age;
     const sumAges = ages.reduce(reducerAge);
     console.log(sumAges); // => 127
-    
+
     //Array#flat returns a flattened version of a given array.
     const array = [1, [2, [3]]];
     //            ^^^^^^^^^^^^^ outer array
@@ -76,26 +76,26 @@ ARRAY VERIFICAR
     // …is equivalent to:
     array.flat(1);
     // → [1, 2, [3]]
-    //Here’s another example. We have a duplicate function that takes a value, and returns an array 
+    //Here’s another example. We have a duplicate function that takes a value, and returns an array
     //that contains that value twice. If we apply duplicate to each value in an array, we end up with a nested array.
 
     const duplicate = (x) => [x, x];
 
     [2, 3, 4].map(duplicate);
     // → [[2, 2], [3, 3], [4, 4]]
-    
+
     //You can then call flat on the result to flatten the array:
 
     [2, 3, 4].map(duplicate).flat(); // 🐌
     // → [2, 2, 3, 3, 4, 4]
-    
+
     Since this pattern is so common in functional programming, there’s now a dedicated flatMap method for it.
 
     [2, 3, 4].flatMap(duplicate); // 🚀
     // → [2, 2, 3, 3, 4, 4]
     </code>
 </pre>
-    
+
 <li>VARIÁVEIS: var, let & const</li>
 <pre class="language-js">
    <code class="language-js">
@@ -561,6 +561,183 @@ console.log(number2.toFixed(4) );
 
    </code>
 </pre>
+<li>Converting data to String</li>
+<pre class="language-js">
+   <code class="language-js">
+// Numbers to string
+
+let number = 90210,
+    output;
+
+output = String(number);
+
+// Anothers
+dato = 4+4;
+dato = "4" + "4";
+
+
+console.log(output);
+console.log(output.length);
+console.log(typeof output);
+
+
+
+
+
+// bool to string
+output = true;
+output = String(true);
+
+// date to string
+output = new Date();
+output = String( new Date() );
+
+// array to string
+output = String( [1,2,3,4] );
+
+// toString()
+
+output = 20.toString() ;
+output = true.toString() ;
+output = [1,2,3,4].toString() ;
+
+// null cannot be converted since it doesn't exist
+output = null.toString() ;
+
+    </code>
+</pre>
+
+<li>Template Literals</li>
+<pre class="language-js">
+   <code class="language-js">
+
+const product1 = 'Pizza';
+const price1 = 30;
+const product2 = 'Hamburger';
+const price2 = 40;
+
+// Old Method
+let html;
+html  = '&lt;ul>'+
+        '&lt;li>Item: ' + product1 + '&lt;/li>' +
+        '&lt;li>Price: $ ' + price1 + '&lt;/li>' +
+        '&lt;li>Item: ' + product2 + '&lt;/li>' +
+        '&lt;li>Price: $ ' + price2 + '&lt;/li>' +
+        '&lt;li>Total: $' + (price1 + price2) + '&lt;/li>';
+        '&lt;/ul>';
+
+// Template Strings
+
+html = `
+    &lt;ul>
+        &lt;li>Item: ${product1}&lt;/li>
+        &lt;li>Price: ${price1}&lt;/li>
+        &lt;li>Item: ${product2}&lt;/li>
+        &lt;li>Price: ${price2}  &lt;/li>
+        &lt;li>Total: ${total(price1, price2)}&lt;/li>
+    &lt;/ul>
+`;
+
+function total(param1, param2) {
+    return param1 + param2;
+}
+
+// HTML to inject the code
+
+let app = document.querySelector('#app');
+app.innerHTML = html ;
+    </code>
+</pre>
+
+<li>Arrays </li>
+<pre class="language-js">
+   <code class="language-js">
+// Array is a variable that can hold more than one value at the time
+// Usually arrays hold related data.
+
+// Creating an array
+const numbers = [10,20,30,40,50];
+console.log(numbers);
+
+// Array of Months
+const months = new Array('January', 'February', 'March', 'April', 'May', 'June');
+console.log(months);
+
+// Array with mixed values and data types!
+const mixedArray = ["Hello", 10, true, "Yes", null];
+console.log(mixedArray);
+
+// Array methods
+// Check the length in an array
+console.log(months.length);
+
+// Check if is an array
+console.log(Array.isArray(months));
+
+let name = 'Juan';
+console.log(Array.isArray(name));
+
+// Access any element in the array
+console.log(months[0]);
+console.log(months[3]);
+
+// Change Values in the array
+months[3] = 'December';
+console.log(months);
+
+// Find any element in the array
+console.log(months.indexOf('December'));
+
+// Add any element in the end of the array
+months.push('Noviembre');
+
+// Add element at the beginning of the array
+months.unshift('Mes 0');
+
+// Remove element from the end
+months.pop();
+
+// Remove element from the beggining
+months.shift();
+
+// Remove from specific position
+// Splice takes 2 parameters, first one is the position,
+// second one, how many elements you want to remove
+months.splice(0,2);
+
+// Reverse
+months.reverse();
+console.log(months);
+
+// Concatenate two arrays in JavaScript
+const array1 = [1,2,3];
+const array2 = [9,8,7];
+console.log(array1.concat(array2));
+
+// order an array
+let fruits = ['Banana', 'Apple', 'Strawberry', 'Orange', 'WaterMelon'];
+
+fruits.sort();
+console.log(fruits);
+
+// Order numbers
+const arrayNumbers = [1,3,100,4,6,7,3,2,14,67];
+
+// Order from lower to greater
+arrayNumbers.sort(function(x, y) {
+    return x - y;
+});
+
+// Order from greater to lower
+arrayNumbers.sort(function(x, y) {
+    return y - x;
+});
+
+console.log(arrayNumbers);
+    </code>
+</pre>
+
+
 
 
 <style>
