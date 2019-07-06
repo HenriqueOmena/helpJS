@@ -11,737 +11,735 @@
 </head>
 <body>
 
-<div class="box red">
-
-</div>
-
-<li>ARRAYS s2</li>
- <pre class="language-js">
-   <code class="language-js">
-    //definindo arrya de exemplos
-    const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier'];
-    const ages = [20, 25, 19, 21, 42];
-
-    //Array.filter():
-    //Este método possibilita você filtrar múltiplos elementos com uma condição definida por você. Exemplo:
-    const startWithS = (word) => word.indexOf('S') === 0;
-    const beersStartWithS = beers.filter(startWithS);
-    console.log(beersStartWithS); // => [0: 'San Diego', 1: Saint Bier]
-
-    //Array.find():
-    //O diferencial deste método comparado ao método filter() é que sempre será
-    //retornado apenas um elemento que se encaixe a condição definida por você. Confira o exemplo:
-    const findSanDiego = (element) => element === 'San Diego';
-    const beerSanDiego = beers.find(findSanDiego);
-    console.log(beerSanDiego); // => "San Diego"
-
-    //Array.every():
-    //Possibilita testar todos os elementos do seu array. Caso algum dos elementos não passe pela
-    //condição definida por você, o retorno será false. Veja o exemplo:
-    const isGreaterThan = (age) => age > 18;
-    const greater = ages.every(isGreaterThan);
-    console.log(greater); // => true
-    //Caso não houvessem elementos a serem retornados, obteríamos o retorno undefined.
-
-    //Array.includes()
-    //Possibilita verificar se um element existe ou não no array definido. Exemplo:
-    console.log(beers.includes('Skol')); // => false
-    console.log(ages.includes(25)); // => true
-
-    Array.map()
-    //Este método percorre todos os elementos do array, executando funções para cada elemento e
-    //retornando um novo array como resultado. Exemplo:
-    const upAge = (age) => age + 1;
-    const newAges = ages.map(upAge);
-    console.log(newAges); // => [0: 21, 1: 26, 2: 20, 3: 22, 4: 43]
-
-    //Array.some()
-    //Este método verifica se ao menos um elemento satisfaz a
-    //condição definida por você. Exemplo:
-    const hasHeinekenOrSaint = (beer) => (beer === 'Saint Bier' || beer === 'Heineken');
-    const heinekenSaint = beers.some(hasHeinekenOrSaint);
-    console.log(heinekenSaint); // => true
+<ul>
+    <li>ARRAYS s2</li>
+    <pre class="language-js">
+    <code class="language-js">
+        //definindo arrya de exemplos
+        const beers = ['Heineken', 'San Diego', 'Coruja', 'Saint Bier'];
+        const ages = [20, 25, 19, 21, 42];
+
+        //Array.filter():
+        //Este método possibilita você filtrar múltiplos elementos com uma condição definida por você. Exemplo:
+        const startWithS = (word) => word.indexOf('S') === 0;
+        const beersStartWithS = beers.filter(startWithS);
+        console.log(beersStartWithS); // => [0: 'San Diego', 1: Saint Bier]
+
+        //Array.find():
+        //O diferencial deste método comparado ao método filter() é que sempre será
+        //retornado apenas um elemento que se encaixe a condição definida por você. Confira o exemplo:
+        const findSanDiego = (element) => element === 'San Diego';
+        const beerSanDiego = beers.find(findSanDiego);
+        console.log(beerSanDiego); // => "San Diego"
+
+        //Array.every():
+        //Possibilita testar todos os elementos do seu array. Caso algum dos elementos não passe pela
+        //condição definida por você, o retorno será false. Veja o exemplo:
+        const isGreaterThan = (age) => age > 18;
+        const greater = ages.every(isGreaterThan);
+        console.log(greater); // => true
+        //Caso não houvessem elementos a serem retornados, obteríamos o retorno undefined.
+
+        //Array.includes()
+        //Possibilita verificar se um element existe ou não no array definido. Exemplo:
+        console.log(beers.includes('Skol')); // => false
+        console.log(ages.includes(25)); // => true
+
+        Array.map()
+        //Este método percorre todos os elementos do array, executando funções para cada elemento e
+        //retornando um novo array como resultado. Exemplo:
+        const upAge = (age) => age + 1;
+        const newAges = ages.map(upAge);
+        console.log(newAges); // => [0: 21, 1: 26, 2: 20, 3: 22, 4: 43]
+
+        //Array.some()
+        //Este método verifica se ao menos um elemento satisfaz a
+        //condição definida por você. Exemplo:
+        const hasHeinekenOrSaint = (beer) => (beer === 'Saint Bier' || beer === 'Heineken');
+        const heinekenSaint = beers.some(hasHeinekenOrSaint);
+        console.log(heinekenSaint); // => true
+
+        //Array.reduce()
+        //Você pode utilizar o método reduce para alguns casos,
+        //sendo um deles para facilitar cálculos. Exemplo:
+        const reducerAge = (accumulator, age) => accumulator + age;
+        const sumAges = ages.reduce(reducerAge);
+        console.log(sumAges); // => 127
 
-    //Array.reduce()
-    //Você pode utilizar o método reduce para alguns casos,
-    //sendo um deles para facilitar cálculos. Exemplo:
-    const reducerAge = (accumulator, age) => accumulator + age;
-    const sumAges = ages.reduce(reducerAge);
-    console.log(sumAges); // => 127
+        //Array#flat returns a flattened version of a given array.
+        const array = [1, [2, [3]]];
+        //            ^^^^^^^^^^^^^ outer array
+        //                ^^^^^^^^  inner array
+        //                    ^^^   innermost array
 
-    //Array#flat returns a flattened version of a given array.
-    const array = [1, [2, [3]]];
-    //            ^^^^^^^^^^^^^ outer array
-    //                ^^^^^^^^  inner array
-    //                    ^^^   innermost array
+        array.flat();
+        // → [1, 2, [3]]
 
-    array.flat();
-    // → [1, 2, [3]]
+        // …is equivalent to:
+        array.flat(1);
+        // → [1, 2, [3]]
+        //Here’s another example. We have a duplicate function that takes a value, and returns an array
+        //that contains that value twice. If we apply duplicate to each value in an array, we end up with a nested array.
 
-    // …is equivalent to:
-    array.flat(1);
-    // → [1, 2, [3]]
-    //Here’s another example. We have a duplicate function that takes a value, and returns an array
-    //that contains that value twice. If we apply duplicate to each value in an array, we end up with a nested array.
+        const duplicate = (x) => [x, x];
 
-    const duplicate = (x) => [x, x];
+        [2, 3, 4].map(duplicate);
+        // → [[2, 2], [3, 3], [4, 4]]
 
-    [2, 3, 4].map(duplicate);
-    // → [[2, 2], [3, 3], [4, 4]]
+        //You can then call flat on the result to flatten the array:
 
-    //You can then call flat on the result to flatten the array:
+        [2, 3, 4].map(duplicate).flat(); // 🐌
+        // → [2, 2, 3, 3, 4, 4]
 
-    [2, 3, 4].map(duplicate).flat(); // 🐌
-    // → [2, 2, 3, 3, 4, 4]
+        Since this pattern is so common in functional programming, there’s now a dedicated flatMap method for it.
 
-    Since this pattern is so common in functional programming, there’s now a dedicated flatMap method for it.
+        [2, 3, 4].flatMap(duplicate); // 🚀
+        // → [2, 2, 3, 3, 4, 4]
+        </code>
+    </pre>
 
-    [2, 3, 4].flatMap(duplicate); // 🚀
-    // → [2, 2, 3, 3, 4, 4]
-    </code>
-</pre>
+    <li>VARIÁVEIS: var, let & const</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Usando var cai no conceito hoisting onde ela eh sempre pescada para o topo do codigo
+    var learning = 'JavaScript';
 
-<li>VARIÁVEIS: var, let & const</li>
-<pre class="language-js">
-   <code class="language-js">
-// Usando var cai no conceito hoisting onde ela eh sempre pescada para o topo do codigo
-var learning = 'JavaScript';
+    console.log(learning);
 
-console.log(learning);
+    // Uma variável pode conter: letras, números ou sublinhados
+    // não pode começar com um número
 
-// Uma variável pode conter: letras, números ou sublinhados
-// não pode começar com um número
+    var 99dias;
+    var agente007;
 
-var 99dias;
-var agente007;
+    var _produtos;
+    var 01products;
 
-var _produtos;
-var 01products;
+    // Enviando valor para o console
+    console.log()
 
-// Enviando valor para o console
-console.log()
+    // Formas de "Escrever Variaveis com mais de um nome"
+    var firstName = 'Juan Pablo'; // CamelCase
+    var first_name = 'Juan Pablo'; //underscore
+    var FirstName = 'Juan Pablo'; // pascal case
+    var firstname = 'Juan Pablo';
 
-// Formas de "Escrever Variaveis com mais de um nome"
-var firstName = 'Juan Pablo'; // CamelCase
-var first_name = 'Juan Pablo'; //underscore
-var FirstName = 'Juan Pablo'; // pascal case
-var firstname = 'Juan Pablo';
 
 
+    // var, let  const
 
-// var, let  const
+    // VAR
+    var learning = 'JavaScript';
+    var age = 20;
+    var job = true;
 
-// VAR
-var learning = 'JavaScript';
-var age = 20;
-var job = true;
+    learning = 'Modern JS';
 
-learning = 'Modern JS';
+    // Inicialização de variavel
+    var learning;
+    learning = 'JavaScript';
 
-// Inicialização de variavel
-var learning;
-learning = 'JavaScript';
+    // Inicialização de 2(duas) variaveis
+    var learning, name;
 
-// Inicialização de 2(duas) variaveis
-var learning, name;
+    learning = 'JavaScript';
+    name = 'Juan';
 
-learning = 'JavaScript';
-name = 'Juan';
+    console.log(learning);
+    console.log(name);
 
-console.log(learning);
-console.log(name);
+    // Um dos principais problemas do JS eh que o var pode ser reescrito
+    // you can re declare the variable
+    var learning = 'Modern JS';
+    var learning = 'JavaScript';
 
-// Um dos principais problemas do JS eh que o var pode ser reescrito
-// you can re declare the variable
-var learning = 'Modern JS';
-var learning = 'JavaScript';
+    // Mas isso foi resolvidi com let
 
-// Mas isso foi resolvidi com let
+    let learning = 'Modern JS';
+    let learning = 'JavaScript'; // aqui o JS vai reclamar falando que let leraning ja tem um valor definido
 
-let learning = 'Modern JS';
-let learning = 'JavaScript'; // aqui o JS vai reclamar falando que let leraning ja tem um valor definido
 
+    // Let nas Variaveis
 
-// Let nas Variaveis
+    let name = 'Juan';
+    name = 'Pablo';
+    console.log(name);
 
-let name = 'Juan';
-name = 'Pablo';
-console.log(name);
+    // Incicializando variavel
+    let learning;
 
-// Incicializando variavel
-let learning;
+    learning = 'Learning JS';
 
-learning = 'Learning JS';
+    console.log(learning);
 
-console.log(learning);
+    // Multiplas Variaveis
+    let product1 = 'Book #1',
+        product2 = 'Book #1';
 
-// Multiplas Variaveis
-let product1 = 'Book #1',
-    product2 = 'Book #1';
+    console.log(product1);
+    console.log(product2);
 
-console.log(product1);
-console.log(product2);
+    // Variavel como Array
+    let shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
+    console.log(shoppingCart);
 
-// Variavel como Array
-let shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
-console.log(shoppingCart);
+    // CONST VARIABLES
+    // Const deve ter um valor inicial e nao pode ser alterado
+    const name;
 
-// CONST VARIABLES
-// Const deve ter um valor inicial e nao pode ser alterado
-const name;
+    const name = 'Juan';
+    console.log(name);
 
-const name = 'Juan';
-console.log(name);
+    // Não é possivel reatribuir um valor
+    name = 'Pablo';
+    console.log(name);
 
-// Não é possivel reatribuir um valor
-name = 'Pablo';
-console.log(name);
 
+    // Em constantes os valores de um objeto podem sim ser alterados
+    const car = {
+        name: 'Mustang',
+        motor: 6.5
+    }
+    console.log(car);
 
-// Em constantes os valores de um objeto podem sim ser alterados
-const car = {
-    name: 'Mustang',
-    motor: 6.5
-}
-console.log(car);
+    car.name = 'Audi';
+    console.log(car);
 
-car.name = 'Audi';
-console.log(car);
+    // Const com Array os valores do array tbm pode sem alterados
+    const numbers = [1,2,3,4,5];
 
-// Const com Array os valores do array tbm pode sem alterados
-const numbers = [1,2,3,4,5];
+    console.log(numbers);
 
-console.log(numbers);
+    numbers[3] = 3;
+    console.log(numbers);
 
-numbers[3] = 3;
-console.log(numbers);
+    numbers.push(6);
+    console.log(numbers);
 
-numbers.push(6);
-console.log(numbers);
+    // So não é possivel reescrever o array inteiro
 
-// So não é possivel reescrever o array inteiro
+    numbers = [1,2,3];
+        </code>
+    </pre>
 
-numbers = [1,2,3];
-    </code>
-</pre>
+    <li>Strings in JavaScript</li>
+    <pre class="language-js">
+    <code class="language-js">
+    let name;
+    // Aspas.
+    name = 'Juan Pablo';
+    name = "Juan Pablo";
+    name = 'Juan Pablo";
+    name = 'Then i said: hey what's up? ';
+    name = 'Then i said: hey what\'s up? '; // A barra preve o conserto da aspas simples
 
-<li>Strings in JavaScript</li>
-<pre class="language-js">
-   <code class="language-js">
-let name;
-// Aspas.
-name = 'Juan Pablo';
-name = "Juan Pablo";
-name = 'Juan Pablo";
-name = 'Then i said: hey what's up? ';
-name = 'Then i said: hey what\'s up? '; // A barra preve o conserto da aspas simples
+    console.log(name);
 
-console.log(name);
+    // Concatenando string modo simples
+    let learning = 'Java' + 'Script';
+    console.log(learning);
 
-// Concatenando string modo simples
-let learning = 'Java' + 'Script';
-console.log(learning);
+    // Concatenando 2 variaveis.
+    let learning = 'learning',
+        tech = 'JavaScript';
 
-// Concatenando 2 variaveis.
-let learning = 'learning',
-    tech = 'JavaScript';
+    console.log(learning + ' ' + tech);
 
-console.log(learning + ' ' + tech);
+    // Concatenando variavel com string.
+    let band = "Metallica";
+    let song = "Enter Sandman";
 
-// Concatenando variavel com string.
-let band = "Metallica";
-let song = "Enter Sandman";
+    let playing;
+    playing = 'Playing ' + song + ' by ' + band;
 
-let playing;
-playing = 'Playing ' + song + ' by ' + band;
+    // Concatenando
+    name = band + ": " + song;
 
-// Concatenando
-name = band + ": " + song;
+    // Outra forma de Concatenar
+    let name;
 
-// Outra forma de Concatenar
-let name;
+    name = 'Juan Pablo ';
+    name += 'De la torre';
+    console.log(name);
 
-name = 'Juan Pablo ';
-name += 'De la torre';
-console.log(name);
+    //É possivel concatenar strings de forma mais bonita e facil de ler Usando
+    // Template Strings
 
-//É possivel concatenar strings de forma mais bonita e facil de ler Usando
-// Template Strings
+    html = `
+        &lt;ul>
+            &lt;li>Item: ${product1}&lt;/li>
+            &lt;li>Price: ${price1}&lt;/li>
+            &lt;li>Item: ${product2}&lt;/li>
+            &lt;li>Price: ${price2}  &lt;/li>
+            &lt;li>Total: ${total(price1, price2)}&lt;/li>
+        &lt;/ul>
+    `;
+        </code>
+    </pre>
 
-html = `
-    &lt;ul>
-        &lt;li>Item: ${product1}&lt;/li>
-        &lt;li>Price: ${price1}&lt;/li>
-        &lt;li>Item: ${product2}&lt;/li>
-        &lt;li>Price: ${price2}  &lt;/li>
-        &lt;li>Total: ${total(price1, price2)}&lt;/li>
-    &lt;/ul>
-`;
-    </code>
-</pre>
+    <li>String Methods</li>
+    <pre class="language-js">
+    <code class="language-js">
 
-<li>String Methods</li>
-<pre class="language-js">
-   <code class="language-js">
+    const learning = 'Learning JavaScript is great!';
+    let output;
 
-const learning = 'Learning JavaScript is great!';
-let output;
+    // length Conta os caracteres
+    output = learning.length ;
 
-// length Conta os caracteres
-output = learning.length ;
+    // concat cada parametro concatena a string
+    output = learning.concat(" ", " and fun");
 
-// concat cada parametro concatena a string
-output = learning.concat(" ", " and fun");
+    // uppercase Transforma em caixa alta / Letra maiuscula
+    output = learning.toUpperCase();
 
-// uppercase Transforma em caixa alta / Letra maiuscula
-output = learning.toUpperCase();
+    // lowercase Transforma em caixa Baix / Letra minuscula
+    output = learning.toLowerCase();
 
-// lowercase Transforma em caixa Baix / Letra minuscula
-output = learning.toLowerCase();
+    // indexOf // indexof -1 quer dizer que nao existe.
+    // No demais retorna onde esta a primeira letra da string dividindo ela num array
+    output = learning.indexOf('JavaScript');
+    output = learning.indexOf('PHP');
 
-// indexOf // indexof -1 quer dizer que nao existe.
-// No demais retorna onde esta a primeira letra da string dividindo ela num array
-output = learning.indexOf('JavaScript');
-output = learning.indexOf('PHP');
+    // substring() corta letras da palavra
+    // Primeiro parametro eh do inicio para frente
+    // Segundo parametro eh do fin para o inicio
+    output = learning.substring(0,10);
+    output = learning.substring(2,10);
 
-// substring() corta letras da palavra
-// Primeiro parametro eh do inicio para frente
-// Segundo parametro eh do fin para o inicio
-output = learning.substring(0,10);
-output = learning.substring(2,10);
+    // Aquie podemos mostrar apenas os 4 ultimos caracteres
+    output = learning.substring( learning.length - 4 );
 
-// Aquie podemos mostrar apenas os 4 ultimos caracteres
-output = learning.substring( learning.length - 4 );
+    // slice() corta do inicio para frente e com
+    // Numero negativo corta da frente para atras
+    // negative number will start from the end
+    output = learning.slice(0,4); //Lear
+    output = learning.slice(1,4); //ear
+    output = learning.slice(-2);  //t!
 
-// slice() corta do inicio para frente e com
-// Numero negativo corta da frente para atras
-// negative number will start from the end
-output = learning.slice(0,4); //Lear
-output = learning.slice(1,4); //ear
-output = learning.slice(-2);  //t!
+    // Split retira o espaço da string
+    output = learning.split(" ");
 
-// Split retira o espaço da string
-output = learning.split(" ");
+    // Outro exemplo retira a virgula e o espaço
+    const hobbies = 'read, walk, listen music, write, learn to program';
+    output = hobbies.split(", ");
 
-// Outro exemplo retira a virgula e o espaço
-const hobbies = 'read, walk, listen music, write, learn to program';
-output = hobbies.split(", ");
+    // Replace
+    //Primeiro o valor novo depois o valor que sera removido
+    output = learning.replace('JavaScript', 'Modern JavaScript');
 
-// Replace
-//Primeiro o valor novo depois o valor que sera removido
-output = learning.replace('JavaScript', 'Modern JavaScript');
+    // includes
+    // Verifica se contem a string dentro da string e retorna true ou false
+    output = learning.includes('JavaScript');
+    output = learning.includes('PHP');
 
-// includes
-// Verifica se contem a string dentro da string e retorna true ou false
-output = learning.includes('JavaScript');
-output = learning.includes('PHP');
+    // repeat
+    let greet =  "hello ";
+        output = greet.repeat(3);
 
-// repeat
-let greet =  "hello ";
-    output = greet.repeat(3);
+    console.log(output);
+        </code>
+    </pre>
 
-console.log(output);
-    </code>
-</pre>
+    <li>Numbers in JavaScript</li>
+    <pre class="language-js">
+    <code class="language-js">
+    const number1 = 30;
+    const number2 = 20;
+    const number3 = 20.20;
+    const number4 = .10213;
+    const number5 = -3;
 
-<li>Numbers in JavaScript</li>
-<pre class="language-js">
-   <code class="language-js">
-const number1 = 30;
-const number2 = 20;
-const number3 = 20.20;
-const number4 = .10213;
-const number5 = -3;
+    console.log(number1);
 
-console.log(number1);
+    let result;
 
-let result;
+    // addition
+    result = number1 + number2;
+    // substraction
+    result = number1 - number2;
+    // multiplication
+    result = number1 * number2;
+    // Division
+    result = number1 / number2;
+    // Modulos
+    result = number1 % number2;
 
-// addition
-result = number1 + number2;
-// substraction
-result = number1 - number2;
-// multiplication
-result = number1 * number2;
-// Division
-result = number1 / number2;
-// Modulos
-result = number1 % number2;
+    // Pi
+    result = Math.PI;
 
-// Pi
-result = Math.PI;
+    // round
+    //Arredonda valor sempre para cima a partir de .5
+    result = Math.round(2.5); //3
 
-// round
-//Arredonda valor sempre para cima a partir de .5
-result = Math.round(2.5); //3
+    // Areendonda sempre para cim
+    result = Math.ceil(2.2);
 
-// Areendonda sempre para cim
-result = Math.ceil(2.2);
+    // Arredonda sempre para baixo
+    result = Math.floor(2.2);
 
-// Arredonda sempre para baixo
-result = Math.floor(2.2);
+    // raiz quadrada
+    result = Math.sqrt(144);
 
-// raiz quadrada
-result = Math.sqrt(144);
+    // retornar o valor absoluto de um numero
+    // ou seja distancia entre o numro e o pont de origem 0 (zero)
+    result = Math.abs(-300); //300
 
-// retornar o valor absoluto de um numero
-// ou seja distancia entre o numro e o pont de origem 0 (zero)
-result = Math.abs(-300); //300
+    // Potencia
+    result = Math.pow(8, 3);
 
-// Potencia
-result = Math.pow(8, 3);
+    // Pegar o menor valor da lista
+    // Para fazer com array basta usar spread+array ...array
+    const nums = [3,5,1,2,9,4,2, -3]
+    result = Math.min(...nums);
+    //ou
+    result = Math.min(3,5,1,2,9,4,2, -3);
 
-// Pegar o menor valor da lista
-// Para fazer com array basta usar spread+array ...array
-const nums = [3,5,1,2,9,4,2, -3]
-result = Math.min(...nums);
-//ou
-result = Math.min(3,5,1,2,9,4,2, -3);
+    // Pegar o maior valor da lista
+    // Para fazer com array basta usar spread+array ...array
+    result = Math.max(4,1,21,4,15,5,11,5);
 
-// Pegar o maior valor da lista
-// Para fazer com array basta usar spread+array ...array
-result = Math.max(4,1,21,4,15,5,11,5);
+    // Gera um numero randomico
+    result = Math.random();
+    // Função util para achar entre 2 valore
+    const valorAleatorio = (min, max) =>  Math.random() * (max - min) + min;
+    // Caso queira que o numero gerado seja inteiro
+    const valorInteiroAleatorio =  (min, max) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-// Gera um numero randomico
-result = Math.random();
-// Função util para achar entre 2 valore
-const valorAleatorio = (min, max) =>  Math.random() * (max - min) + min;
-// Caso queira que o numero gerado seja inteiro
-const valorInteiroAleatorio =  (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    // Aplicando 20€ de desconto
+    const itens = (20 + 20 + 30 + 40);
+    const desconto = (itens / 100) * 20;
+    const valorTotal = itens - desconto;
 
-// Aplicando 20€ de desconto
-const itens = (20 + 20 + 30 + 40);
-const desconto = (itens / 100) * 20;
-const valorTotal = itens - desconto;
+    console.log('Total: ' + itens)
+    console.log('desconto: ' + desconto);
+    console.log('Pay: ' + valorTotal);
 
-console.log('Total: ' + itens)
-console.log('desconto: ' + desconto);
-console.log('Pay: ' + valorTotal);
 
 
+    // Incrementar ou Decrementar
+    let score = 5;
+    score++;
+    score--;
+    ++score;
+    --score;
 
-// Incrementar ou Decrementar
-let score = 5;
-score++;
-score--;
-++score;
---score;
+    score += 3;
+    score -= 3;
 
-score += 3;
-score -= 3;
+    console.log(score);
+        </code>
+    </pre>
 
-console.log(score);
-    </code>
-</pre>
+    <li>Data Types in JavaScript</li>
+    <pre class="language-js">
+    <code class="language-js">
 
-<li>Data Types in JavaScript</li>
-<pre class="language-js">
-   <code class="language-js">
+    // Javascript is a dinamically typed language
+    // You don't specify the data type
+    // the data type is defined by the value and not the variable
 
-// Javascript is a dinamically typed language
-// You don't specify the data type
-// the data type is defined by the value and not the variable
+    // The same variable can hold different data types and change
+    // while the program is executing
 
-// The same variable can hold different data types and change
-// while the program is executing
+    // In languages such as C, Java or C# you have to specify the data type
 
-// In languages such as C, Java or C# you have to specify the data type
+    // In JavaScript you can add that functionality with TypeScript
 
-// In JavaScript you can add that functionality with TypeScript
+    // TypeOf operator is used to retrieve the data type
 
-// TypeOf operator is used to retrieve the data type
+    // In JavaScript a variable can change the data type
 
-// In JavaScript a variable can change the data type
+    let name = 'Juan'
+    name = 20;
+    name = true;
+    name = undefined;
+    name = Symbol('Hello');
+    console.log(typeof name);
 
-let name = 'Juan'
-name = 20;
-name = true;
-name = undefined;
-name = Symbol('Hello');
-console.log(typeof name);
+    // Let's review the other data types
+    const name = "Juan";
+    console.log(typeof name );
 
-// Let's review the other data types
-const name = "Juan";
-console.log(typeof name );
+    // Numbers
+    let number;
 
-// Numbers
-let number;
+    number =  20;
+    console.log(typeof number );
+    number = "20";
+    console.log(typeof number );
 
-number =  20;
-console.log(typeof number );
-number = "20";
-console.log(typeof number );
+    // Boolean
+    let learningJS = true;
+    console.log(typeof learningJS );
 
-// Boolean
-let learningJS = true;
-console.log(typeof learningJS );
+    // Null
+    // will return object
+    let bankSavings = null;
+    console.log(typeof bankSavings );
 
-// Null
-// will return object
-let bankSavings = null;
-console.log(typeof bankSavings );
+    // Undefined
+    let person;
+    console.log(typeof person );
 
-// Undefined
-let person;
-console.log(typeof person );
+    // Symbol (ES6)
+    let symbolES6 = Symbol('this is a symbol');
+    console.log(typeof symbolES6);
 
-// Symbol (ES6)
-let symbolES6 = Symbol('this is a symbol');
-console.log(typeof symbolES6);
+    // Reference (Objetos)
+    // Arrays
+    let languages = ['HTML5', 'JS', 'PHP'];
+    console.log(typeof languages);
 
-// Reference (Objetos)
-// Arrays
-let languages = ['HTML5', 'JS', 'PHP'];
-console.log(typeof languages);
+    // Objects
+    let person = {
+        name: 'Juan',
+        city: 'mexico'
+    }
+    console.log(typeof person);
 
-// Objects
-let person = {
-    name: 'Juan',
-    city: 'mexico'
-}
-console.log(typeof person);
+    // Dates
+    let today = new Date();
+    console.log(typeof today);
 
-// Dates
-let today = new Date();
-console.log(typeof today);
+        </code>
+    </pre>
 
-    </code>
-</pre>
+    <li>Converter Strings para Numero</li>
+    <pre class="language-js">
+    <code class="language-js">
+    let number1 = "50",
+        number2 = 10,
+        number3 = 'nine';
 
-<li>Converter Strings para Numero</li>
-<pre class="language-js">
-   <code class="language-js">
-let number1 = "50",
-    number2 = 10,
-    number3 = 'nine';
 
+    console.log(number1 + number2);
 
-console.log(number1 + number2);
+    // Converter number1 para numero
+    console.log(Number(number1) + number2);
+    console.log(parseInt(number1) + number2);
 
-// Converter number1 para numero
-console.log(Number(number1) + number2);
-console.log(parseInt(number1) + number2);
+    // Converter number 3
+    console.log(number3);
 
-// Converter number 3
-console.log(number3);
+    // Concatenar valores
+    console.log(number1 + number2);
 
-// Concatenar valores
-console.log(number1 + number2);
+    // mas aqui ira subtrair
+    console.log(number1 - number2);
 
-// mas aqui ira subtrair
-console.log(number1 - number2);
+    // Outros metodos
+    let number = "20";
+    number = Number("20");
+    number = Number("20.20102");
+    number = Number(true);
+    number = Number(false);
+    number = Number(null);
+    number = Number("Hello world");
+    number = Number([1,2,3,4]);
 
-// Outros metodos
-let number = "20";
-number = Number("20");
-number = Number("20.20102");
-number = Number(true);
-number = Number(false);
-number = Number(null);
-number = Number("Hello world");
-number = Number([1,2,3,4]);
+    console.log(number);
+    console.log(typeof number);
 
-console.log(number);
-console.log(typeof number);
+    // ParseInt & ParseFloat
+    // parse int na arredonda um float, ele apenas ignora o float e traz so as decimais+
+    number = parseInt("100");
+    number = parseInt("100.20");
+    number = parseFloat("100.20");
 
-// ParseInt & ParseFloat
-// parse int na arredonda um float, ele apenas ignora o float e traz so as decimais+
-number = parseInt("100");
-number = parseInt("100.20");
-number = parseFloat("100.20");
 
-
-// ToFixed apenas para numero!
-let number1 = "1209139";
-let number2 = 1209139.101213;
-console.log(number1.toFixed(4) );
-console.log(number2.toFixed(4) );
-
-   </code>
-</pre>
-<li>Converting data to String</li>
-<pre class="language-js">
-   <code class="language-js">
-// Numbers to string
-
-let number = 90210,
-    output;
-
-output = String(number);
-
-// Anothers
-dato = 4+4;
-dato = "4" + "4";
-
-
-console.log(output);
-console.log(output.length);
-console.log(typeof output);
-
-
-
-
-
-// bool to string
-output = true;
-output = String(true);
-
-// date to string
-output = new Date();
-output = String( new Date() );
-
-// array to string
-output = String( [1,2,3,4] );
-
-// toString()
-
-output = 20.toString() ;
-output = true.toString() ;
-output = [1,2,3,4].toString() ;
-
-// null cannot be converted since it doesn't exist
-output = null.toString() ;
+    // ToFixed apenas para numero!
+    let number1 = "1209139";
+    let number2 = 1209139.101213;
+    console.log(number1.toFixed(4) );
+    console.log(number2.toFixed(4) );
 
     </code>
-</pre>
+    </pre>
+    <li>Converting data to String</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Numbers to string
 
-<li>Template Literals</li>
-<pre class="language-js">
-   <code class="language-js">
+    let number = 90210,
+        output;
 
-const product1 = 'Pizza';
-const price1 = 30;
-const product2 = 'Hamburger';
-const price2 = 40;
+    output = String(number);
 
-// Old Method
-let html;
-html  = '&lt;ul>'+
-        '&lt;li>Item: ' + product1 + '&lt;/li>' +
-        '&lt;li>Price: $ ' + price1 + '&lt;/li>' +
-        '&lt;li>Item: ' + product2 + '&lt;/li>' +
-        '&lt;li>Price: $ ' + price2 + '&lt;/li>' +
-        '&lt;li>Total: $' + (price1 + price2) + '&lt;/li>';
-        '&lt;/ul>';
-
-// Template Strings
-
-html = `
-    &lt;ul>
-        &lt;li>Item: ${product1}&lt;/li>
-        &lt;li>Price: ${price1}&lt;/li>
-        &lt;li>Item: ${product2}&lt;/li>
-        &lt;li>Price: ${price2}  &lt;/li>
-        &lt;li>Total: ${total(price1, price2)}&lt;/li>
-    &lt;/ul>
-`;
-
-function total(param1, param2) {
-    return param1 + param2;
-}
-
-// HTML to inject the code
-
-let app = document.querySelector('#app');
-app.innerHTML = html ;
-    </code>
-</pre>
-
-<li>Arrays </li>
-<pre class="language-js">
-   <code class="language-js">
-// Array is a variable that can hold more than one value at the time
-// Usually arrays hold related data.
-
-// Creating an array
-const numbers = [10,20,30,40,50];
-console.log(numbers);
-
-// Array of Months
-const months = new Array('January', 'February', 'March', 'April', 'May', 'June');
-console.log(months);
-
-// Array with mixed values and data types!
-const mixedArray = ["Hello", 10, true, "Yes", null];
-console.log(mixedArray);
-
-// Array methods
-// Check the length in an array
-console.log(months.length);
-
-// Check if is an array
-console.log(Array.isArray(months));
-
-let name = 'Juan';
-console.log(Array.isArray(name));
-
-// Access any element in the array
-console.log(months[0]);
-console.log(months[3]);
-
-// Change Values in the array
-months[3] = 'December';
-console.log(months);
-
-// Find any element in the array
-console.log(months.indexOf('December'));
-
-// Add any element in the end of the array
-months.push('Noviembre');
-
-// Add element at the beginning of the array
-months.unshift('Mes 0');
-
-// Remove element from the end
-months.pop();
-
-// Remove element from the beggining
-months.shift();
-
-// Remove from specific position
-// Splice takes 2 parameters, first one is the position,
-// second one, how many elements you want to remove
-months.splice(0,2);
-
-// Reverse
-months.reverse();
-console.log(months);
-
-// Concatenate two arrays in JavaScript
-const array1 = [1,2,3];
-const array2 = [9,8,7];
-console.log(array1.concat(array2));
-
-// order an array
-let fruits = ['Banana', 'Apple', 'Strawberry', 'Orange', 'WaterMelon'];
-
-fruits.sort();
-console.log(fruits);
-
-// Order numbers
-const arrayNumbers = [1,3,100,4,6,7,3,2,14,67];
-
-// Order from lower to greater
-arrayNumbers.sort(function(x, y) {
-    return x - y;
-});
-
-// Order from greater to lower
-arrayNumbers.sort(function(x, y) {
-    return y - x;
-});
-
-console.log(arrayNumbers);
-    </code>
-</pre>
-
-<!-- HERE -->
+    // Anothers
+    dato = 4+4;
+    dato = "4" + "4";
 
 
+    console.log(output);
+    console.log(output.length);
+    console.log(typeof output);
+
+
+
+
+
+    // bool to string
+    output = true;
+    output = String(true);
+
+    // date to string
+    output = new Date();
+    output = String( new Date() );
+
+    // array to string
+    output = String( [1,2,3,4] );
+
+    // toString()
+
+    output = 20.toString() ;
+    output = true.toString() ;
+    output = [1,2,3,4].toString() ;
+
+    // null cannot be converted since it doesn't exist
+    output = null.toString() ;
+
+        </code>
+    </pre>
+
+    <li>Template Literals</li>
+    <pre class="language-js">
+    <code class="language-js">
+
+    const product1 = 'Pizza';
+    const price1 = 30;
+    const product2 = 'Hamburger';
+    const price2 = 40;
+
+    // Old Method
+    let html;
+    html  = '&lt;ul>'+
+            '&lt;li>Item: ' + product1 + '&lt;/li>' +
+            '&lt;li>Price: $ ' + price1 + '&lt;/li>' +
+            '&lt;li>Item: ' + product2 + '&lt;/li>' +
+            '&lt;li>Price: $ ' + price2 + '&lt;/li>' +
+            '&lt;li>Total: $' + (price1 + price2) + '&lt;/li>';
+            '&lt;/ul>';
+
+    // Template Strings
+
+    html = `
+        &lt;ul>
+            &lt;li>Item: ${product1}&lt;/li>
+            &lt;li>Price: ${price1}&lt;/li>
+            &lt;li>Item: ${product2}&lt;/li>
+            &lt;li>Price: ${price2}  &lt;/li>
+            &lt;li>Total: ${total(price1, price2)}&lt;/li>
+        &lt;/ul>
+    `;
+
+    function total(param1, param2) {
+        return param1 + param2;
+    }
+
+    // HTML to inject the code
+
+    let app = document.querySelector('#app');
+    app.innerHTML = html ;
+        </code>
+    </pre>
+
+    <li>Arrays </li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Array is a variable that can hold more than one value at the time
+    // Usually arrays hold related data.
+
+    // Creating an array
+    const numbers = [10,20,30,40,50];
+    console.log(numbers);
+
+    // Array of Months
+    const months = new Array('January', 'February', 'March', 'April', 'May', 'June');
+    console.log(months);
+
+    // Array with mixed values and data types!
+    const mixedArray = ["Hello", 10, true, "Yes", null];
+    console.log(mixedArray);
+
+    // Array methods
+    // Check the length in an array
+    console.log(months.length);
+
+    // Check if is an array
+    console.log(Array.isArray(months));
+
+    let name = 'Juan';
+    console.log(Array.isArray(name));
+
+    // Access any element in the array
+    console.log(months[0]);
+    console.log(months[3]);
+
+    // Change Values in the array
+    months[3] = 'December';
+    console.log(months);
+
+    // Find any element in the array
+    console.log(months.indexOf('December'));
+
+    // Add any element in the end of the array
+    months.push('Noviembre');
+
+    // Add element at the beginning of the array
+    months.unshift('Mes 0');
+
+    // Remove element from the end
+    months.pop();
+
+    // Remove element from the beggining
+    months.shift();
+
+    // Remove from specific position
+    // Splice takes 2 parameters, first one is the position,
+    // second one, how many elements you want to remove
+    months.splice(0,2);
+
+    // Reverse
+    months.reverse();
+    console.log(months);
+
+    // Concatenate two arrays in JavaScript
+    const array1 = [1,2,3];
+    const array2 = [9,8,7];
+    console.log(array1.concat(array2));
+
+    // order an array
+    let fruits = ['Banana', 'Apple', 'Strawberry', 'Orange', 'WaterMelon'];
+
+    fruits.sort();
+    console.log(fruits);
+
+    // Order numbers
+    const arrayNumbers = [1,3,100,4,6,7,3,2,14,67];
+
+    // Order from lower to greater
+    arrayNumbers.sort(function(x, y) {
+        return x - y;
+    });
+
+    // Order from greater to lower
+    arrayNumbers.sort(function(x, y) {
+        return y - x;
+    });
+
+    console.log(arrayNumbers);
+        </code>
+    </pre>
+
+    <!-- HERE -->
+
+
+</ul>
 <!-- SCRIPTS -->
 <script src="node_modules/animejs/lib/anime.min.js"></script>
 <script src="main.js"></script>
