@@ -1,0 +1,35 @@
+* {
+    margin:0;
+    padding:0;
+}
+li {
+    text-align: center;
+    list-style:none;
+    font-family: helvetica, arial, serif;
+    margin:30px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+    background-color: black;
+}
+code[class*="language-"], pre[class*="language-"] {
+    font-size: 20px;
+}
+
+li {
+    font-size: 30px;
+}
+.box{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    margin: 4px;
+    display: inline-block;
+}
+
+
+.red{
+    background: red;
+
+}
