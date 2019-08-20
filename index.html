@@ -738,7 +738,331 @@
 
     <!-- HERE -->
 
+    <li>JavaScript Objects</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // In JavaScript an Object is similar to an array in a lot of ways
+    // Objects have properties attached to them
+    // THis properties are defined by you and you access them with a dot
 
+    // Create an Object
+
+    const person = {
+        name: 'Juan',
+        lastName: 'De la torre',
+        job: 'Web Developer',
+        email: 'mail@mail.com'
+    }
+
+    console.log(person);
+    console.log(person.name);
+    console.log(person.job);
+
+    // Another way but not really common
+    console.log( person[name] );
+
+    // An Object can hold any data type
+    const person = {
+        name: 'Juan',
+        lastName: 'De la torre',
+        job: 'Web Developer',
+        email: 'mail@mail.com'
+        age : 20,
+        favoriteMusic: ['Trance', 'Rock', 'Grunge'],
+        living: {
+            city: 'Guadalajara',
+            country: 'Mexico'
+        },
+        birthYear: function() {
+            return new Date().getFullYear() - this.age;
+        }
+    }
+
+    // Access each element
+    console.log(person);
+    console.log(person.name);
+    console.log(person.favoriteMusic);
+    console.log(person.living);
+    console.log(person['living']['city']);
+
+    // An Object can contain also functions
+
+    birthYear: function() {
+        return new Date().getFullYear() - this.age;
+    }
+
+    // Access the function
+    console.log( person.birthYear() );
+
+    // Array of Objects
+    let cars = [
+        {model: 'Mustang', engine: 6.0},
+        {model: 'Camaro', engine: 6.1},
+        {model: 'Challenger', engine: 6.1},
+    ];
+
+    // Iterate in the array of objects
+
+    for(let i = 0; i < cars.length; i++) {
+        console.log(cars[i].model);
+    }
+        </code>
+    </pre>
+
+
+    <li>Functions</li>
+    <pre class="language-js">
+    <code class="language-js">
+
+    // Function Declaration
+    function helloVisitor() {
+        console.log('Hello & Welcome ');
+    }
+    // A function must be called
+    helloVisitor();
+
+    // Passing Arguments to functions will make them more smart
+    function helloVisitor(firstName, lastName) {
+        return `Hello ${firstName}  ${lastName} `;
+    }
+    console.log( helloVisitor('Pablo', 'De la torre') );
+
+    // Try without second argument
+    console.log( helloVisitor('Pablo') );
+
+    // Default parameters older way
+    function helloVisitor(firstName, lastName) {
+        if(typeof firstName === 'undefined') {firstName = ''}
+        if(typeof lastName === 'undefined') {lastName = ''}
+        return `hello ${firstName}  ${lastName} `;
+    }
+    console.log( helloVisitor('Pablo', 'De la torre') );
+    console.log( helloVisitor('Pablo', ) );
+    console.log( helloVisitor() );
+
+
+    // Default Values new way
+    function helloVisitor(firstName = 'Juan' , lastName = 'de la torre') {
+        return `Hello ${firstName}  ${lastName} `;
+    }
+    console.log( helloVisitor('Pablo', 'De la torre') );
+
+    // Function expressions
+    const sum = function(a = 5, b = 2) {
+        return a + b;
+    };
+
+    console.log(sum(4, 8));
+    console.log(sum(14, 18));
+    console.log(sum(24, 28));
+    console.log(sum());
+
+
+    //  FUnctions that are invoked inmediately (IIFEs)
+    // immediately-invoked function expression
+
+    (function() {
+        console.log('IIFES!!');
+    })();
+
+    // Passing arguments to functions
+
+    (function(technology) {
+        console.log('Learning ' + technology);
+    })('JavaScript');
+
+    // Property Methods (a function inside an object is a method)
+
+    const musicPlayer = {
+        play: function(id) {
+            console.log(`Playing song with the ID: ${id}`);
+        },
+        pause: function() {
+            console.log('paused....');
+        }
+    }
+    musicPlayer.play(30);
+    musicPlayer.pause();
+
+
+    // Methods can be outside (but variable name should match)
+    musicPlayer.remove = function(id) {
+        console.log(`Remove from my playlist: ${id}`)
+    }
+    musica.remove(20);
+
+
+    // Basically you can create your own functions, but remember
+    // JavaScript has  set of functions also.
+
+    console.log();
+    alert();
+    prompt();
+    confirm();
+        </code>
+    </pre>
+
+
+    <li>Dates in JavaScript</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Dates in JavaScript are objects so you have to create a new date.
+    const today = new Date();
+    let output;
+
+    console.log(today);
+
+    // Date MM-DAY-YEAR
+    let birthday = new Date('1-5-1987');
+
+    // Another way
+    birthday = new Date('January 5 1987');
+
+    output = today.getMonth();
+    output = today.getDate();
+    output = today.getDay();
+    output = today.getFullYear();
+    output = today.getMinutes();
+    output = today.getHours();
+    output = today.getTime();
+    output = today.getFullYear();
+    output = today.setFullYear(2018);
+
+    console.log(output);
+        </code>
+    </pre>
+
+    <li>Control Structures in JavaScript</li>
+    <pre class="language-js">
+    <code class="language-js">
+
+    // A Control Structure will tell javaScript the flow
+    // where the program should be executed.
+
+    // If Operator
+    const score = 100;
+
+    // EQUAL
+    if(score == 100) {
+        console.log("Yes, is the same");
+    } else {
+        console.log("No is not the same");
+    }
+
+    // Not equal
+    if(score != 100) {
+        console.log("Yes, different!");
+    }  else {
+        console.log("Not, not different, values are the same");
+    }
+
+    // Strict comparison Operator
+    if(score === '1000') {
+        console.log("Yes is the same");
+    } else {
+        console.log("Values are not the same");
+    }
+
+    // Strict comparison operator (not equal)
+    if(score !== 1000) {
+        console.log("Yes, is different !");
+    } else {
+        console.log("No, is not differet");
+    }
+
+    // Check if variable has a value
+    const score = 1000;
+
+    if(score) {
+        console.log(`Yes, and the score is: ${score}`);
+    } else {
+        console.log('No, there\'s no score');
+    }
+
+    // Check variable exists
+    if(typeof score != 'undefined' ) {
+        console.log(`yes, and the score is ${score}`);
+    } else {
+        console.log('No, there\'s no score');
+    }
+
+    // Other comparison are   <    >      and      >=     <=
+
+    let cash = 500;
+    let cartTotals = 300;
+
+    if( cash > cartTotals ) {
+        console.log('successful payment');
+    } else {
+        console.log('insufficient funds');
+    }
+
+    // When you have 1 line you can skip curly braces
+    let cash = 500;
+    let cartTotals = 300;
+
+    if( cash > cartTotals )
+        console.log('successful payment');
+    else
+        console.log('insufficient funds');
+
+
+
+    // else if
+
+    let currentTime = 20;
+    if(currentTime <= 10) {
+        console.log('Good Mourning');
+    } else if(currentTime <= 18) {
+        console.log('Good Afternoon');
+    } else {
+        console.log('Good Night');
+    }
+
+    let currentTime = 25;
+    // Operador && will check both conditions
+    if(currentTime > 0 && currentTime <= 12 ) {
+        console.log('Good Mourning');
+    }  else if( currentTime > 12 && currentTime <= 18) {
+        console.log('Good Afternoon');
+    } else if( currentTime > 18 && currentTime <= 24) {
+        console.log('Good Night');
+    } else {
+        console.log('Invalid...');
+    }
+
+    // Operator  || OR
+    let cash = 300;
+    let credit = 300;
+    let cartTotals = 700;
+
+    if(cartTotals < cash || cartTotals < credit ) {
+        console.log('You can pay with cash or credit');
+    } else {
+        console.log('Insufficient Funds');
+    }
+
+    // More advanced Example.
+
+    let cash = 300;
+    let credit = 300;
+    let available = cash + credit;
+    let cartTotals = 700;
+
+    if(cash > cartTotals || credit > cartTotals ) {
+        console.log('You can pay with cash or credit');
+    } else if(available >= cartTotals) {
+        console.log('Pay with both!');
+    } else {
+        console.log('Insufficient Funds');
+    }
+
+    // Ternary
+    let loggedIn = false;
+    console.log( loggedIn === true ? 'The user is logged in' : 'Not logged, please log in' );
+
+        </code>
+    </pre>
 </ul>
 <!-- SCRIPTS -->
 <script src="node_modules/animejs/lib/anime.min.js"></script>
