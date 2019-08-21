@@ -1063,6 +1063,440 @@
 
         </code>
     </pre>
+    <li>Switches</li>
+    <pre class="language-js">
+    <code class="language-js">
+
+    // The switch statement evaluates an expression, it checks a case,  and executes statements associated with that case.
+
+
+    const paymentMethod = 'cash';
+
+    switch(paymentMethod) {
+        case 'cash':
+            console.log(`Your Payment Method is: ${paymentMethod}`);
+            break;
+        case 'check':
+            console.log(`Your Payment Method is: ${paymentMethod} we will verify the funds...`);
+            break;
+        case 'card':
+            console.log(`Your Payment method is: ${metodoPago} processing...`);
+            break;
+        default:
+            console.log('Please select a payment Method');
+            break;
+    }
+
+    // Asign a variable from a switch case.
+    const cars = ['Camaro', 'Mustang', 'Challenger'];
+
+    const selected = 2;
+    let car;
+    switch(selected) {
+        case 0:
+            car = cars[0];
+            break;
+        case 1:
+            car = cars[1];
+            break;
+        case 2:
+            car = cars[2];
+            break;
+    }
+    console.log(`Your selected car is ${car}`);
+        </code>
+    </pre>
+
+    <li>For Loops</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // a for loop is used to run a code or statement until a
+    // condition is met
+
+    // For loop consist on 3 parts.
+    // Initial value, condition, and the increment
+    for(let i = 0; i < 10; i++) {
+        console.log(`Number:  ${i} `);
+    }
+
+    // READ A VALUE
+    for(let i = 0; i < 10; i++) {
+        if(i == 2) {
+            console.log('Yes! 2!');
+            // test with and without continue;
+            continue;
+        }
+        console.log(`Number:  ${i} `);
+    }
+
+    // Break the for Loop
+    for(let i = 0; i < 10; i++) {
+        if(i == 2) {
+            console.log('Yes! 2!');
+            break;
+        }
+        console.log(`Number:  ${i} `);
+    }
+
+    // Odd or even number
+    for(let i = 0; i <= 10; i++) {
+        if(i % 2 == 0) {
+            console.log(`${i} is even `);
+        } else {
+            console.log(` ${i} is ODD `);
+        }
+    }
+
+    // For loop for a Shopping cart
+    const shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
+    // Access each value manually
+    shoppingCart[0];
+    shoppingCart[1];
+    shoppingCart[2];
+
+    for(let i = 0; i < 3 ; i++ ){
+        console.log(`Product: ${shoppingCart[i]}`);
+    }
+
+    // Use shoppingCart.length
+
+        </code>
+    </pre>
+
+    <li>While & Do while</li>
+    <pre class="language-js">
+    <code class="language-js">
+
+    let i = 0;
+
+    while(i < 10) {
+        console.log(`Number: ${i}`);
+        i++;
+    }
+
+    // Looping an array with While.
+    const shoppingCart = ['Product 1', 'Product 2', 'Product 3'];
+
+    let i = 0;
+
+    while(i < shoppingCart.length ) {
+        console.log(`Product: ${shoppingCart[i]}`);
+        i++;
+    }
+
+
+    // Do While will run at least 1 time, doesn't really matter if the cndition is meth or not
+
+    let i = 0; // Try with 1000
+    do {
+        console.log(`Number: ${i}`)
+        i++;
+    } while( i < 10);
+
+        </code>
+    </pre>
+
+    <li>Loop an array with for, foreach & MAP</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Loop an array with for
+
+    let todoList = ['Homework', 'Food', 'Project', 'Learn JS'];
+    for(let i = 0; i < todoList.length; i++) {
+        console.log(todoList[i] );
+    }
+
+    // loop an array with foreach
+    todoList.forEach(function(assignment, index) {
+        console.log(`${index} : ${assignment}`);
+    });
+
+    // Loop with MAP
+    const shoppingCart = [
+        {id: 1, product: 'Book' },
+        {id: 2, product: 'Shirt'},
+        {id: 3, product: 'Album'}
+    ];
+
+    const productName = shoppingCart.map(function(shoppingCart) {
+        return shoppingCart.product;
+    });
+    // This will extract just the product name in a new array.
+    console.log(productName);
+
+    // Iterators in ES6
+    let myCar = {
+        model: 'Camaro',
+        engine: '6.0',
+        yeah: 1969,
+        make: 'Chevrolet'
+    }
+
+    for(let key in myCar) {
+        console.log(`${key}: ${myCar[key]}`);
+    }
+        </code>
+    </pre>
+
+
+    <li>Window Object</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Window Object, type this in the window.
+
+    window
+
+    // You don't have to type console.log or alert with window since they're part of the global in javascript
+
+    window.console.log('hello');
+    window.alert("alert!");
+
+    // Prompt
+    const name = prompt('Your Name?');
+
+    // Confirm
+    if(confirm('Are you sure ?')) {
+        console.log('Deleted...')
+    } else {
+        console.log('Nothing happens...');
+    }
+
+    // Retrieve width and height of the window
+
+    let height, width;
+
+    height = window.outerHeight;
+    width = window.outerWidth;
+
+    // without interface
+    height = window.innerHeight;
+    width = window.innerWidth;
+
+
+    console.log(height);
+    console.log(width);
+
+
+    // Location
+    let urlLocation = window.location;
+    console.log(urlLocation);
+    console.log(urlLocation.hostname);
+    console.log(urlLocation.port);
+
+    // append this in the url ?id=20&name=juan
+    console.log(ubicacion.search);
+
+    // redirect via JS
+    window.location.href = 'http://google.com';
+
+        </code>
+    </pre>
+
+    <li>Scope</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Scope is the accessibility of variables, functions, and
+    // objects in your code.
+    // scope will determine the visibility of variables
+    // and their values in your code
+
+    let a = "a";
+    let b = "b";
+    const c = "c";
+
+    // fUNCTION Scope
+    function function_scope() {
+        let a = 'A';
+        let b = 'B';
+        const c = 'C';
+        console.log('Function: '+ a,b,c);
+    }
+    function_scope();
+
+    console.log('Global:'+ a,b,c);
+
+    // Block Scope (if, for, and others delimited by {} )
+    if(true) {
+        let a = 'AA';
+        let b = 'BB';
+        const c = 'CC';
+        console.log('BLOCK LEVEL: '+ a,b,c);
+    }
+    // FOR
+    for(let a = 0; a < 10; a++) {
+        console.log(a);
+    }
+
+        </code>
+    </pre>
+
+    <li>DOM</li>
+    <pre class="language-js">
+    <code class="language-js">
+
+
+    let element;
+
+    element = document;
+    element = document.all;
+    element = document.all[0];
+    element = document.head;
+    element = document.body;
+    element = document.domain;
+    element = document.URL;
+    element = document.characterSet;
+    element = document.contentType;
+
+    element = document.links;
+    element = document.links[0].id;
+    element = document.links[0].className;
+
+    element = document.forms;
+    element = document.forms[0];
+    element = document.forms[0].id;
+    element = document.forms[0].method;
+    element = document.forms[0].action;
+    element = document.forms[0].classList;
+    element = document.forms[0].classList[0];
+
+    element = document.images;
+
+    element = document.scripts;
+    element = document.scripts[2].getAttribute('src');
+
+    // looping all images
+    let images = document.images;
+    let imagesArray = Array.from(images);
+
+    imagesArray.forEach(function(image) {
+        console.log(image);
+    });
+
+    console.log(element);
+    </code>
+    </pre>
+
+
+
+    <li>Selecting Elements in JS</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // Selecting DOM Elements
+    console.log(document.getElementById('heading'));
+
+    // Retrieve id or class from heading
+    console.log( document.getElementById('heading').id );
+    console.log( document.getElementById('heading').className );
+
+    // Change the CSS
+    let heading = document.getElementById('heading');
+    heading.style.background = '#333';
+    heading.style.color = '#FFF';
+    heading.style.padding = '20px';
+
+    // Change the Text
+    heading.textContent = 'The best courses';
+    // Alternative way
+    heading.innerText = 'Learn from the Experts';
+
+    // Query SELECTOR with ID
+    const learnHeading = document.querySelector('#learn');
+
+
+    // Query Selector with Class
+    const tagline = document.querySelector('.tagline');
+
+    // Query selector with Tag
+    const heading = document.querySelector('h1');
+
+    // If there're different elements query selector will return the first
+    let card = document.querySelector('.card');
+
+    // Nesting like CSS
+    let image = document.querySelector('.card img');
+
+    // li:nth-child(3)  or li:last-child  or li:first-child
+
+    let link = document.querySelector('#primary a:last-child');
+    let link = document.querySelector('#primary a:nth-child(2)');
+    let link = document.querySelector('#primary a:first-child');
+
+    </code>
+    </pre>
+
+    <li>Select Multiple Elements in JS</li>
+    <pre class="language-js">
+    <code class="language-js">
+    // document.getElementsByClassName
+
+    const links = document.getElementsByClassName('link');
+    // console.log(links);
+    links[0].style.color = 'red';
+    links[2].textContent = 'New Text';
+    console.log(links[0]);
+
+
+    // You can also use queryselector and getElementsByClassName
+    const links = document.querySelector('nav').getElementsByClassName('link');
+    console.log(links);
+
+
+    // document.getElementsByTagName
+    let images = document.getElementsByTagName('img');
+    console.log(images[0]);
+
+    // Convert HTMLCollection to array
+    images = Array.from(images);
+    console.log(images);
+
+    // Loop through SRC of images.
+    images.forEach(function(image) {
+        console.log(image.src);
+    });
+
+    // document.querySelectorAll
+    // returns a node list
+
+
+    const cards = document.querySelectorAll('.card');
+    console.log(cards);
+
+    const courses = document.querySelectorAll('.card h4')
+
+    courses.forEach(function(course) {
+        console.log(course.textContent);
+    });
+
+
+    // odd links
+    const oddLinks = document.querySelectorAll('#primary a:nth-child(odd)');
+    console.log(oddLinks);
+
+    oddLinks.forEach(function(odd) {
+        odd.style.backgroundColor = 'red';
+        odd.style.color  = 'white';
+    });
+
+    // Even Links
+    const evenLinks = document.querySelectorAll('#primary a:nth-child(even)');
+    console.log(evenLinks);
+
+    evenLinks.forEach(function(even) {
+        even.style.backgroundColor = 'blue';
+        even.style.color  = 'white';
+    });
+
+    // Change all add-to-cart texts.
+    const addCartBtns = document.querySelectorAll('.add-to-cart');
+    addCartBtns.forEach(function(button) {
+        button.textContent = 'New Text';
+    });
+
+    </code>
+    </pre>
+
+
+
 </ul>
 <!-- SCRIPTS -->
 <script src="node_modules/animejs/lib/anime.min.js"></script>
